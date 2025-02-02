@@ -1,5 +1,5 @@
-#ifndef INC_APP_H_
-#define INC_APP_H_
+#ifndef INC_STEPPER_H_
+#define INC_STEPPER_H_
 
 #include "main.h"
 

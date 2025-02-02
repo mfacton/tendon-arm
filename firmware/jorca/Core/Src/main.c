@@ -443,6 +443,7 @@ static void MX_GPIO_Init(void)
 /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOE_CLK_ENABLE();
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
@@ -452,27 +453,56 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOD, M4PP_Pin|M4PM_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOE, M1PM_Pin|M1DP_Pin|M1DM_Pin|M1EP_Pin
+                          |M1EM_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOD, M4PP_Pin|M4PM_Pin|M3PP_Pin|M3PM_Pin
+                          |M3DP_Pin|M3DM_Pin|M3EP_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOG, M4DP_Pin|M4DM_Pin|M4EP_Pin|M4EM_Pin
-                          |LED_Pin, GPIO_PIN_RESET);
+                          |LED_Pin|M3EM_Pin|M2PP_Pin|M2PM_Pin
+                          |M2DP_Pin|M2DM_Pin|M2EP_Pin|M2EM_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : M4PP_Pin M4PM_Pin */
-  GPIO_InitStruct.Pin = M4PP_Pin|M4PM_Pin;
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(M1PP_GPIO_Port, M1PP_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : M1PM_Pin M1DP_Pin M1DM_Pin M1EP_Pin
+                           M1EM_Pin */
+  GPIO_InitStruct.Pin = M1PM_Pin|M1DP_Pin|M1DM_Pin|M1EP_Pin
+                          |M1EM_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOE, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : M4PP_Pin M4PM_Pin M3PP_Pin M3PM_Pin
+                           M3DP_Pin M3DM_Pin M3EP_Pin */
+  GPIO_InitStruct.Pin = M4PP_Pin|M4PM_Pin|M3PP_Pin|M3PM_Pin
+                          |M3DP_Pin|M3DM_Pin|M3EP_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
   /*Configure GPIO pins : M4DP_Pin M4DM_Pin M4EP_Pin M4EM_Pin
-                           LED_Pin */
+                           LED_Pin M3EM_Pin M2PP_Pin M2PM_Pin
+                           M2DP_Pin M2DM_Pin M2EP_Pin M2EM_Pin */
   GPIO_InitStruct.Pin = M4DP_Pin|M4DM_Pin|M4EP_Pin|M4EM_Pin
-                          |LED_Pin;
+                          |LED_Pin|M3EM_Pin|M2PP_Pin|M2PM_Pin
+                          |M2DP_Pin|M2DM_Pin|M2EP_Pin|M2EM_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : M1PP_Pin */
+  GPIO_InitStruct.Pin = M1PP_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(M1PP_GPIO_Port, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
