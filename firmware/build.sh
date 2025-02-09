@@ -1,3 +1,3 @@
 #!/bin/bash
-cmake jorca --preset=Release
-pushd jorca/build/Release && ninja && popd
+cmake jorcaf4 --preset=Release
+pushd jorcaf4/build/Release && ninja && popd

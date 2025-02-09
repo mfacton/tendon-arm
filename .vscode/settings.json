@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "compare": "c",
-        "cstdint": "c"
+        "cstdint": "c",
+        "stepper.h": "c"
     }
 }

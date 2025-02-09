@@ -29,7 +29,7 @@ static struct Stepper st4 = {
 static struct Stepper* steppers[STEPPER_COUNT] = {&st1, &st2, &st3, &st4};
 
 static uint16_t counters[STEPPER_COUNT] = {0, 0, 0, 0};
-static uint16_t invSpeeds[STEPPER_COUNT] = {600, 600, 600, 600};
+static uint16_t invSpeeds[STEPPER_COUNT] = {65535, 65535, 65535, 65535};
 
 static int16_t positions[STEPPER_COUNT] = {0, 0, 0, 0};
 static uint8_t directions[STEPPER_COUNT] = {0, 0, 0, 0};
